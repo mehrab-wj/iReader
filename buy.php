@@ -9,44 +9,10 @@ include_once("includes/basic.php");
     $seo->home_meta();
    ?>
 
-  <title>iReader - خرید اسکریپت</title>
-  <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" href="img/eyeglasses.png" />
-<meta name="description" content="برنامه نویسی , آموزش , هک و امنیت , اسکریپت , فیلم و سریال , دانلود , موبایل , خرید آنلاین , ربات , تلگرام , اخبار , هالیوود , خبر , پوست و زیبایی">
-<meta name="keywords" content="برنامه نویسی , آموزش , هک و امنیت , اسکریپت , فیلم و سریال , دانلود , موبایل , خرید آنلاین , ربات , تلگرام , اخبار , هالیوود , خبر , پوست و زیبایی">
-<meta http-equiv="content-language" content="fa">
 
-<meta name="author" content="Mehrab Hojjati Pour">
-<meta property="og:locale" content="fa_IR" />
-
-<meta property="og:title" content="iReader - خرید اسکریپت" />
-<meta property="og:description" content="برنامه نویسی , آموزش , هک و امنیت , اسکریپت , فیلم و سریال , دانلود , موبایل , خرید آنلاین , ربات , تلگرام , اخبار , هالیوود , خبر , پوست و زیبایی" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="img/eyeglasses.png" />
-<meta property="og:url" content="https://GhasrPay.ir" />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="iReader - خرید اسکریپت" />
-<meta name="twitter:description" content="برنامه نویسی , آموزش , هک و امنیت , اسکریپت , فیلم و سریال , دانلود , موبایل , خرید آنلاین , ربات , تلگرام , اخبار , هالیوود , خبر , پوست و زیبایی" />
-<meta name="robots" content="robots.txt"/>
-<meta name="enamad" content="670701324"/>
-
-<meta name="theme-color" content="#3F51B5" />
 </head>
 <body>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">iReader</a>
-      </div>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="ads">تبلیغ در سایت</a></li>
-        <li class="active"><a href="buy">خرید این اسکریپت</a></li>
-        <li><a href="./">خانه</a></li>
-      </ul>
-    </div>
-  </nav>
+  <?php $Build->navbar(); ?>
   <div class="container">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="ads">
       <div class="box shadow_box purchase_cm_box" >
@@ -111,21 +77,33 @@ include_once("includes/basic.php");
         یا با شماره های زیر تماس حاصل فرمایید :<br>
         0903-826-7079
       </div>
-      <div class="box shadow_box purchase_cm_box" >
+
+      <?php
+      $post_query = mysqli_query($db->con,"SELECT * FROM `posts` ORDER BY rand() DESC LIMIT 4");
+      while ($post = mysqli_fetch_assoc($post_query)) {
+
+
+           echo '<a class="suggestion green" href="'.$post['id'].'">
+             چرا '.str_replace("دانلود","",$post['title']).' رو نگاه نمیکنی ؟
+           </a><br>';
+
+         } ?>
+
+      <br><div class="box shadow_box purchase_cm_box" >
       <h4>  مطالب تصادفی</h4>
         <hr>
         <?php
-          $post_query = mysqli_query($db->con,"SELECT * FROM `posts` ORDER BY rand() DESC LIMIT 15");
+          $post_query = mysqli_query($db->con,"SELECT * FROM `posts` ORDER BY rand() DESC LIMIT 10");
           while ($post = mysqli_fetch_assoc($post_query)) {
             echo "<a href='p/{$post['id']}' title='{$post['title']}'>{$post['title']}</a><br>";
           }
          ?>
       </div>
+
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-left" id="leftmenu">
       <div class="box shadow_box purchase_cm_box">
-          <input type="text" class="form-control" name="search" placeholder="یک چیز بنویسید و ...." id="searchInput"><br>
-          <input type="submit" class="btn btn-success" value='جستجو کنید !' style="width:100%;" id="searchBtn">
+          <?php $Build->search_input(); ?>
       </div>
       <div class="box shadow_box purchase_cm_box" >
           <h4>محل تبلیغات A</h4>
@@ -133,53 +111,42 @@ include_once("includes/basic.php");
         <a href="ads">
          <img src="img/ads-120x240.gif" alt="تبلغات بنری" id="ads2" style="margin-right:20px;">
        </a>
-       <a href="ads">
-					 <img src="img/ads-120x240.gif" alt="تبلغات بنری" id="ads2" style="margin-right:20px;">
-				 </a>
+       <a href="http://opizo.com/ref:83757"><img src="http://opizo.com/banner/opizo_120x240.png" alt="کسب درآمد" style="margin-right:20px;"></a>
       </div>
       <div class="box shadow_box purchase_cm_box" >
           <h4>آمار و ارقام</h4>
         <hr>
         <?php
-          $Build->static_panel();
+            $Build->static_panel();
          ?>
       </div>
       <div class="box shadow_box purchase_cm_box">
+        <h4>دسته بندی مطالب</h4>
+        <hr>
+        <?php $Build->category_panel(); ?>
+      </div>
+      <div class="box shadow_box purchase_cm_box tags_box">
         <h4>برچست ها</h4>
         <hr>
-          <?php
-            $tags = "برنامه نویسی , آموزش , هک و امنیت , اسکریپت , فیلم و سریال , دانلود , موبایل , خرید آنلاین , ربات , تلگرام , اخبار , هالیوود , خبر , پوست  ,
-            زیبایی ";
-            $tags_array = explode(',',$tags);
-            $n = 0;
-            $t_count = count($tags_array) - 1;
-            while ($n <= $t_count) {
-              echo '<h3>'.$tags_array[$n].'</h3>';
-              $n++;
-            }
-           ?>
+          <?php $Build->tags_panel($ProjectInfo->site_tags); ?>
       </div>
+
+      <?php
+      $limit = 0;
+      while ($suggestion = $Build->post("RANDOM","DESC","2",true)) {
+        if ($limit == 4) { break; } else { $limit++; }
+        echo '<a class="suggestion" href="p/'.$suggestion['id'].'">
+          '.$suggestion['title'].'
+        </a><br>';
+      }
+       ?>
+
     </div>
   </div>
-  <script src="js/jquery.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="style/bootstrap/js/bootstrap.min.js"></script>
-  <script>
-    $("#searchBtn").click(function() {
-      window.location = 'search/' + $("#searchInput").val();
-    });
-  </script>
-  <!-- Google Analytics -->
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-ga('create', 'UA-XXXX-Y', 'auto');
-ga('send', 'pageview');
 
-</script>
-<!-- End Google Analytics -->
+  <?php
+  $Build->footer();
+   $Build->javascript(); ?>
 </body>
 </html>

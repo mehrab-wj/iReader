@@ -2,17 +2,7 @@
 include("includes/basic.php");
 
 if (isset($_GET['search']) && !empty($_GET['search'])) {
-    $title = mysqli_real_escape_string($db->con,$_GET['search']);
-    $post_query = mysqli_query($db->con,"SELECT * FROM `posts` WHERE `title` LIKE '%$title%' ORDER BY `id` DESC LIMIT 30");
-    if (mysqli_num_rows($post_query) == 0) {
-        echo '<center>
-        هیچ مطلبی یافت نشد !
-        <br><a href="../">
-        برای برگشت به صفحه اصلی ، اینجا کلیک کنید</a>';
 
-    }
-    else {
-      $p = mysqli_fetch_assoc($post_query);
 ?>
 <html>
 <head>
@@ -56,47 +46,6 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
       </div>
     </div>
     <br>
-    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 pull-right" id="posts">
-      <?php
-      if (isset($_GET['search']) && !empty($_GET['search'])) {
-       ?>
-      <div class="box shadow_box purchase_cm_box" >
-      <h4>  نتیجه جستجو</h4>
-        <hr>
-        <?php
-          $title = mysqli_real_escape_string($db->con,$_GET['search']);
-          $post_query = mysqli_query($db->con,"SELECT * FROM `posts` WHERE `title` LIKE '%$title%' ORDER BY `id` DESC LIMIT 30");
-          if (mysqli_num_rows($post_query) == 0) {
-            echo 'هیچ مطلبی یافت نشد !';
-          }
-          while ($post = mysqli_fetch_assoc($post_query)) {
-            echo "<a href='../p/{$post['id']}' title='{$post['title']}'>{$post['title']}</a><br>";
-          }
-         ?>
-      </div>
-      <?php }
-      else {
-        header('Location: ../');
-      }
-
-      $post_query = mysqli_query($db->con,"SELECT * FROM `posts` ORDER BY rand() DESC LIMIT 4");
-      while ($post = mysqli_fetch_assoc($post_query)) {
-
-
-           echo '<a class="suggestion green" href="../p/'.$post['id'].'">
-             چرا '.str_replace("دانلود","",$post['title']).' رو نگاه نمیکنی ؟
-           </a><br>';
-
-         }
-
-       ?>
-
-      <br><div class="box shadow_box purchase_cm_box" >
-      <h4>  مطالب تصادفی</h4>
-        <hr>
-        <?php $Build->post("views","DESC","15"); ?>
-      </div>
-    </div>
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-left" id="leftmenu">
       <div class="box shadow_box purchase_cm_box">
           <?php $Build->search_input(); ?>
@@ -124,12 +73,7 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
       <div class="box shadow_box purchase_cm_box tags_box">
         <h4>برچست ها</h4>
         <hr>
-          <?php
-            $tags = "فیلم ایرانی , دانلود فیلم خارجی , دانلود سریال خارجی , دانلود فیلم ایرانی , فیلم ایرانی , سریال ایرانی ,
-            دانلود فیلم ترسناک , دانلود فیلم وحشت , دانلود فیلم اکشن , دانلود انیمیشن , دانلود کارتون , دانلود فیلم کمدی
-            , دانلود فیلم جنگی , دانلود فیلم عاشقانه , دانلود فیلم درام , دانلود فیلم دوبله فارسی , دانلود فیلم بدون سانسور , دانلود فیلم بزرگسالان";
-            $Build->tags_panel($tags);
-           ?>
+        <?php $Build->tags_panel($ProjectInfo->site_tags); ?>
       </div>
 
       <?php
@@ -143,6 +87,61 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
        ?>
 
     </div>
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 pull-right" id="posts">
+      <?php
+      if (isset($_GET['search']) && !empty($_GET['search'])) {
+       ?>
+
+        <?php
+          $title = mysqli_real_escape_string($db->con,$_GET['search']);
+          $post_query = mysqli_query($db->con,"SELECT * FROM `posts` WHERE `title` LIKE '%$title%' ORDER BY `id` DESC LIMIT 30");
+          if (mysqli_num_rows($post_query) == 0) {
+            echo 'هیچ مطلبی یافت نشد !<br><br>';
+          }
+          while ($post = mysqli_fetch_assoc($post_query)) {
+            echo "
+            <div class=\"box shadow_box purchase_cm_box\" >
+            <h4>{$post['title']} </h4> {$post['views']} بازدید
+            <hr>";
+
+            $description = $post['description'];
+            $description = str_replace($post['link'],"",$description);
+            echo $description;
+            /*
+            $n = 0;
+            $space_array = explode(' ',$post['title']);
+            $scount = count($space_array) - 1;
+            while ($n <= $scount) {
+              echo "<h2>{$space_array[$n]}</h2>";
+              $n++;
+            } */
+            echo '<a class="suggestion s-left-border" href="../p/'.$post['title'].'">
+            مشاهده کامل '.$post['title'].'
+            </a></div><br>';
+
+            }
+         ?>
+
+      <?php }
+      else {
+        header('Location: ../');
+      }
+
+      $post_query = mysqli_query($db->con,"SELECT * FROM `posts` ORDER BY rand() DESC LIMIT 4");
+      while ($post = mysqli_fetch_assoc($post_query)) {
+
+
+           echo '<a class="suggestion green" href="../p/'.$post['id'].'">
+             چرا '.str_replace("دانلود","",$post['title']).' رو نگاه نمیکنی ؟
+           </a><br>';
+
+         }
+
+       ?>
+     </div>
+    </div>
+
+
   </div>
 
 
@@ -152,7 +151,7 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
 </body>
 
 </html>
-<?php }}
+<?php }
 else {
   header('Location: ../');
   echo 'Not Found!';
