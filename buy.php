@@ -8,7 +8,7 @@ include_once("includes/basic.php");
     $Build->styles();
     $seo->home_meta();
    ?>
-   
+
   <title>iReader - خرید اسکریپت</title>
   <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -99,8 +99,8 @@ include_once("includes/basic.php");
         سیستم دریافت و ثبت تبلیغات به صورا کاملا هوشمند
         <br>
         قابلیت اتصال به درگاه پرداخت
-        <a href="https://GhasrPay.IR/" title="قصر پی">
-          قصر پی
+        <a href="https://nextpay.IR/" title="NextPay">
+          نکست پی
         </a>
         <hr>
         قیمت این اسکریپت : 600,000 هزار تومان <br>
