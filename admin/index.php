@@ -32,19 +32,19 @@ $Build = new Build;
       <div class="box shadow_box purchase_cm_box" >
         <?php
           if (isset($_GET['read'])) {
-            $sql = mysqli_query($con,"SELECT * FROM `feeds` ORDER BY `id` DESC");
+            $sql = mysqli_query($db->con,"SELECT * FROM `feeds` ORDER BY `id` DESC");
             $n = 0;
             while ($match = mysqli_fetch_assoc($sql)) {
               try {
-                $content = file_get_contents($match['url']);
-                $x = new SimpleXmlElement($content);
+                $db->content = file_get_contents($match['url']);
+                $x = new SimpleXmlElement($db->content);
                 foreach($x->channel->item as $entry) {
                   $link = $entry->link;
                   $title = $entry->title;
                   $description = $entry->description;
-                  $check_query = mysqli_query($con,"SELECT * FROM `posts` WHERE `title` = '$title'");
+                  $check_query = mysqli_query($db->con,"SELECT * FROM `posts` WHERE `title` = '$title'");
                   if (mysqli_num_rows($check_query) < 1 ) {
-                    $inset_query = mysqli_query($con,"INSERT INTO `posts` (`id`, `title`, `link`,`description`) VALUES (NULL, '$title', '$link','$description'); ");
+                    $inset_query = mysqli_query($db->con,"INSERT INTO `posts` (`id`, `title`, `link`,`description`) VALUES (NULL, '$title', '$link','$description'); ");
                     $n++;
                   }
                 }
@@ -59,13 +59,13 @@ $Build = new Build;
             getFeed($_GET['test']);
           }
           elseif (isset($_GET['data'])) {
-            $sql = mysqli_query($con,"SELECT * FROM `feeds`");
+            $sql = mysqli_query($db->con,"SELECT * FROM `feeds`");
             $n = 0;
             while (mysqli_fetch_assoc($sql)) {
               $n++;
             }
             echo 'تعداد فید های ثب شده : '.$n;
-            $sql = mysqli_query($con,"SELECT * FROM `posts`");
+            $sql = mysqli_query($db->con,"SELECT * FROM `posts`");
             $n = 0;
             while (mysqli_fetch_assoc($sql)) {
               $n++;
