@@ -45,18 +45,7 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
 <meta name="theme-color" content="#3F51B5" />
 </head>
 <body>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">iReader</a>
-      </div>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="../ads">تبلیغ در سایت</a></li>
-        <li><a href="../buy">خرید این اسکریپت</a></li>
-        <li class="active"><a href="../">خانه</a></li>
-      </ul>
-    </div>
-  </nav>
+  <?php $Build->navbar(); ?>
   <div class="container">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="ads">
       <div class="box shadow_box purchase_cm_box" >

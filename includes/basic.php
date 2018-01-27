@@ -7,6 +7,8 @@ include_once(__DIR__."/../class/objects.php");
 $seo = new Seo;
 $db = new DatabaseConnection;
 $Build = new Build;
+$ProjectInfo = new ProjectInfo;
+//$site_info = $ProjectInfo->load_site_data_from_database();
 
 function getBaseUrl()
 {
@@ -22,8 +24,7 @@ function getBaseUrl()
     // output: http://
     $protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,5))=='https'?'https':'http';
 
-    // return: http://localhost/myproject/
-    return '/'.$hostName.''.$pathInfo['dirname'].'/';
+    return $protocol.$hostName.'/'.$pathInfo['dirname'].'/';
 }
 
 function getFeed($feed_url) {

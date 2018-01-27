@@ -21,6 +21,63 @@ class DatabaseConnection {
     mysqli_query($this->con,"SET character_set_connection = 'utf8mb4'");
   }
 
+  public $site_name;
+  public $site_short_about;
+  public $site_about;
+  public $site_tags;
+  public $site_logo;
+  public $site_color;
+
+  function load_site_data_from_database() {
+    $setting_query = mysqli_query($this->con,"SELECT * FROM `setting` WHERE `setting_tag` = 'orginal_setting';");
+    if (mysqli_num_rows($setting_query) == 0) {
+      mysqli_query($this->con,"INSERT INTO `setting` (`id`, `setting_tag`, `site_title`, `site_about`, `site_tags`, `site_logo`, `site_color`, `site_short_about`) VALUES
+      (NULL, 'orginal_setting', 'iReader', 'اسکریپت فید خوان iReader - ربات مطلب خوان', 'iReader , feed reader bot , ربات فید خوان', 'img/eyeglasses.png', '#3F51B5', 'اسکریپت فید خوان');");
+      //insert custom setting if setting row is not exist!
+    }
+    else {
+      $setting = mysqli_fetch_assoc($setting_query);
+      /* $this->site_name = $setting['site_title'];
+      $this->site_short_about = $setting['site_short_about'];
+      $this->site_about = $setting['site_about'];
+      $this->site_tags = $setting['site_tags'];
+      $this->site_logo = $setting['site_logo'];
+      $this->site_color = $setting['site_color']; */
+      return $setting;
+    }
+  }
+
+}
+class ProjectInfo extends DatabaseConnection {
+  public $version = "2.0";
+  public $developer_github = "mehrab-wj";
+  public $git_address = "https://github.com/mehrab-wj/iReader";
+  public $site_name;
+  public $site_short_about;
+  public $site_about;
+  public $site_tags;
+  public $site_logo;
+  public $site_color;
+
+  function load_site_data_from_database() {
+    $setting_query = mysqli_query($this->con,"SELECT * FROM `setting` WHERE `setting_tag` = 'orginal_setting';");
+    if (mysqli_num_rows($setting_query) == 0) {
+      mysqli_query($this->con,"INSERT INTO `setting` (`id`, `setting_tag`, `site_title`, `site_about`, `site_tags`, `site_logo`, `site_color`, `site_short_about`) VALUES
+      (NULL, 'orginal_setting', 'iReader', 'اسکریپت فید خوان iReader - ربات مطلب خوان', 'iReader , feed reader bot , ربات فید خوان', 'img/eyeglasses.png', '#3F51B5', 'اسکریپت فید خوان');");
+      //insert custom setting if setting row is not exist!
+    }
+    else {
+      $setting = mysqli_fetch_assoc($setting_query);
+      /* $this->site_name = $setting['site_title'];
+      $this->site_short_about = $setting['site_short_about'];
+      $this->site_about = $setting['site_about'];
+      $this->site_tags = $setting['site_tags'];
+      $this->site_logo = $setting['site_logo'];
+      $this->site_color = $setting['site_color']; */
+      return $setting;
+    }
+  }
+
 }
 
 

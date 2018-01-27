@@ -10,29 +10,6 @@ include_once("includes/basic.php");
     $Build->styles();
     $seo->home_meta();
    ?>
-   <title>iReader - اسکریپت برسی مطالب</title>
-  <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" href="img/eyeglasses.png" />
-<meta name="description" content="برنامه نویسی , آموزش , هک و امنیت , اسکریپت , فیلم و سریال , دانلود , موبایل , خرید آنلاین , ربات , تلگرام , اخبار , هالیوود , خبر , پوست و زیبایی">
-<meta name="keywords" content="برنامه نویسی , آموزش , هک و امنیت , اسکریپت , فیلم و سریال , دانلود , موبایل , خرید آنلاین , ربات , تلگرام , اخبار , هالیوود , خبر , پوست و زیبایی">
-<meta http-equiv="content-language" content="fa">
-
-<meta name="author" content="Mehrab Hojjati Pour">
-<meta property="og:locale" content="fa_IR" />
-
-<meta property="og:title" content="اسکریپت برسی مطالب - iReader" />
-<meta property="og:description" content="برنامه نویسی , آموزش , هک و امنیت , اسکریپت , فیلم و سریال , دانلود , موبایل , خرید آنلاین , ربات , تلگرام , اخبار , هالیوود , خبر , پوست و زیبایی" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="img/eyeglasses.png" />
-<meta property="og:url" content="https://mehrab.xyz" />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="اسکریپت برسی مطالب - iReader" />
-<meta name="twitter:description" content="برنامه نویسی , آموزش , هک و امنیت , اسکریپت , فیلم و سریال , دانلود , موبایل , خرید آنلاین , ربات , تلگرام , اخبار , هالیوود , خبر , پوست و زیبایی" />
-<meta name="robots" content="robots.txt"/>
-
-<meta name="theme-color" content="#3F51B5" />
 
 </head>
 <body>
@@ -85,12 +62,7 @@ include_once("includes/basic.php");
       <div class="box shadow_box purchase_cm_box tags_box">
         <h4>برچست ها</h4>
         <hr>
-          <?php
-            $tags = "فیلم ایرانی , دانلود فیلم خارجی , دانلود سریال خارجی , دانلود فیلم ایرانی , فیلم ایرانی , سریال ایرانی ,
-            دانلود فیلم ترسناک , دانلود فیلم وحشت , دانلود فیلم اکشن , دانلود انیمیشن , دانلود کارتون , دانلود فیلم کمدی
-            , دانلود فیلم جنگی , دانلود فیلم عاشقانه , دانلود فیلم درام , دانلود فیلم دوبله فارسی , دانلود فیلم بدون سانسور , دانلود فیلم بزرگسالان";
-            $Build->tags_panel($tags);
-           ?>
+          <?php $Build->tags_panel($ProjectInfo->tags); ?>
       </div>
 
       <?php
