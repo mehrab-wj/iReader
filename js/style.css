@@ -1,0 +1,181 @@
+@font-face
+{
+   font-family: 'samim';
+   src: url('fonts/Samim.eot');
+   src: url('fonts/Samim.eot?iefix') format('embedded-opentype'),
+        url('fonts/Samim.ttf') format('truetype');
+
+}
+*{
+font-family:'samim','FontAwesome','tahoma';
+}
+body {
+  background-color: #F5F5F5;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: right;
+    font-size: 16px;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    -webkit-transition: all 0.3s ease-in-out;
+     -moz-transition:    all 0.3s ease-in-out;
+     -o-transition:      all 0.3s ease-in-out;
+     -ms-transition:     all 0.3s ease-in-out;
+     transition: all 0.3s ease-in-out;
+}
+
+li a:hover:not(.active) {
+  text-decoration: none;
+  text-shadow: 0 1px 0 rgb(204,204,204) , 0 2px 0 rgb(201,201,201);
+
+}
+
+.active {
+    background-color: #4CAF50;
+}
+a {
+  text-decoration: none;
+}
+.firstCont {
+  -margin-top:50px;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+  height: 70%;
+  color: white;
+  background-image: url('../img/typing.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+
+}
+.title {
+  text-overflow: clip;
+  text-shadow: 0 1px 0 rgb(204,204,204) , 0 2px 0 rgb(201,201,201) , 0 3px 0 rgb(187,187,187) ;
+}
+.miniAbout {
+  text-shadow: 2px 2px 4px #000000;
+}
+.GetBtn {
+  border: none;
+  background-color: #6dc55d;
+  border-bottom: 4px solid #4CAF50;
+  padding: 20px;
+  font-size: 17px;
+  border-radius: 2px;
+  width: 28%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-transition: all 0.3s ease-in-out;
+   -moz-transition:    all 0.3s ease-in-out;
+   -o-transition:      all 0.3s ease-in-out;
+   -ms-transition:     all 0.3s ease-in-out;
+   transition: all 0.3s ease-in-out;
+}
+.GetBtn:hover {
+  background-color: #43A047;
+  border-bottom: 4px solid #388E3C;
+}
+#login {
+  padding: 0;
+  text-align: center;
+  width: 100%;
+  height: 70%;
+  color: white;
+  background-color: rgb(224, 224, 224);
+}
+.enamad {
+  position: fixed;
+  bottom: 0;
+  left: 2px;
+  width: 10%;
+  height: 25%;
+}
+.mainPanel {
+    width: 50%;
+
+  -webkit-transition: all 0.3s ease-in-out;
+   -moz-transition:    all 0.3s ease-in-out;
+   -o-transition:      all 0.3s ease-in-out;
+   -ms-transition:     all 0.3s ease-in-out;
+   transition: all 0.3s ease-in-out;
+}
+.Paneltitle {
+  padding: 6px;
+  background-color: #ea5858;
+  text-shadow: 0 1px 0 rgb(204,204,204);
+  font-size: 17px;
+}
+.content {
+  padding: 6px;
+  border-width: 0px 2px 2px 2px;
+  border-style: solid;
+  border-color: #ea5858;
+}
+.loginBtn {
+  border: none;
+  background-color: #ea5858;
+  border-bottom: 4px solid rgb(205, 88, 88);
+  padding: 6px;
+  font-size: 17px;
+  border-radius: 2px;
+  width: 28%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-transition: all 0.3s ease-in-out;
+   -moz-transition:    all 0.3s ease-in-out;
+   -o-transition:      all 0.3s ease-in-out;
+   -ms-transition:     all 0.3s ease-in-out;
+   transition: all 0.3s ease-in-out;
+}
+.loginBtn:hover {
+  background-color: rgb(235, 65, 65);
+  border-bottom: 4px solid rgb(205, 65, 65);
+}
+.alert {
+  width: 50%;
+    background: #5cc5d8;
+    border-right: 4px solid #00ACC1;
+    -webkit-transition: all 0.3s ease-in-out;
+     -moz-transition:    all 0.3s ease-in-out;
+     -o-transition:      all 0.3s ease-in-out;
+     -ms-transition:     all 0.3s ease-in-out;
+     transition: all 0.3s ease-in-out;
+}
+input[type=text],input[type=password] {
+  text-align: center;
+  -webkit-transition: all 0.3s ease-in-out;
+   -moz-transition:    all 0.3s ease-in-out;
+   -o-transition:      all 0.3s ease-in-out;
+   -ms-transition:     all 0.3s ease-in-out;
+   transition: all 0.3s ease-in-out;
+}
+input[type=text]:focus,input[type=password]:focus {
+  border-bottom: 2px solid #6dc55d;
+  border-radius: 12px 12px 2px 2px;
+}
+
+@media only screen and (max-width: 768px) {
+  .GetBtn{
+    width: 80%;
+  }
+  .enamad {
+    width: 20%;
+  }
+  .mainPanel {
+    width: 85%;
+  }
+  .alert {
+    width: 85%;
+  }
+}

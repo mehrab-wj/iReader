@@ -1,0 +1,6 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule   ^([a-z]+)?$    $1.php    [NC,L]    # Handle product requests
+RewriteRule    ^Search/(.*)?$    search.php?search=$1    [NC,L]    # Handle product requests
+RewriteRule    ^p/(.*)?$    post.php?search=$1    [NC,L]    # Handle product requests
