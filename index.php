@@ -29,12 +29,27 @@ include_once("includes/basic.php");
         <hr>
         <?php $Build->post("id","DESC","20"); ?>
       </div>
+
       <div class="box shadow_box purchase_cm_box" >
       <h1>  مطالب پربازدید</h1>
         <hr>
         <?php $Build->post("views","DESC","15"); ?>
       </div>
+      <div class="ads-down">
+        <a href="ads">
+         <img src="img/ads_728.jpg.png" alt="تبلغات بنری" id="ads2" style="margin-right:20px;width:96%;height:auto;">
+        </a>
+      </div><br>
+
+      <div class="box shadow_box purchase_cm_box" >
+      <h1>  کاربران بیشتر این مطالب را جستجو کردند</h1>
+        <hr>
+        <?php $Build->searches_log("id","DESC","20"); ?>
+      </div>
+
     </div>
+
+
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-left" id="leftmenu">
       <div class="box shadow_box purchase_cm_box">
           <?php $Build->search_input(); ?>

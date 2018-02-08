@@ -46,6 +46,22 @@ class DatabaseConnection {
       return $setting;
     }
   }
+  function insert_search_log($text) {
+    $search_in_search_table_query = mysqli_query($this->con,"SELECT * FROM `searches` WHERE `text` LIKE '$text' OR `text` LIKE '%$text%'");
+    if (mysqli_num_rows($search_in_search_table_query) > 0) {
+      $search_data = mysqli_fetch_assoc($search_in_search_table_query);
+      $new_count = $search_data['count'] + 1;
+      $id = $search_data['id'];
+      $update_query = mysqli_query($this->con,"UPDATE `searches` SET `count` = '$new_count' WHERE `searches`.`id` = '$id'");
+      if (!$update_query) { echo mysqli_error($this->con); }
+      else { return true; }
+    }
+    else {
+      $insert_query = mysqli_query($this->con,"INSERT INTO `searches` (`id`,`text`,`count`) VALUES (NULL,'$text',1);");
+      if (!$insert_query) { echo mysqli_error($this->con); }
+      else { return true; }
+    }
+  }
 
 }
 class ProjectInfo extends DatabaseConnection {

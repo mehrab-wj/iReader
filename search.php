@@ -2,13 +2,17 @@
 include("includes/basic.php");
 
 if (isset($_GET['search']) && !empty($_GET['search'])) {
-
+  $title = mysqli_real_escape_string($db->con,$_GET['search']);
+  $post_query = mysqli_query($db->con,"SELECT * FROM `posts` WHERE `title` LIKE '%$title%' ORDER BY `id` DESC LIMIT 30");
+  if (mysqli_num_rows($post_query) >= 1) {
+    $p = mysqli_fetch_assoc($post_query);
+  }
+  $db->insert_search_log($title);
 ?>
 <html>
 <head>
   <?php
     $Build->styles("../");
-    $seo->home_meta();
    ?>
   <title>iReader - <?php echo $title; ?></title>
 
@@ -54,7 +58,7 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
           <h4>محل تبلیغات A</h4>
         <hr>
         <a href="ads">
-         <img src="img/ads-120x240.gif" alt="تبلغات بنری" id="ads2" style="margin-right:20px;">
+         <img src="../img/ads-120x240.gif" alt="تبلغات بنری" id="ads2" style="margin-right:20px;">
        </a>
        <a href="http://opizo.com/ref:83757"><img src="http://opizo.com/banner/opizo_120x240.png" alt="کسب درآمد" style="margin-right:20px;"></a>
       </div>

@@ -150,7 +150,7 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
       $limit = 0;
       while ($suggestion = $Build->post("RANDOM","DESC","2",true)) {
         if ($limit == 4) { break; } else { $limit++; }
-        echo '<a class="suggestion" href="p/'.$suggestion['id'].'">
+        echo '<a class="suggestion" href="../p/'.$suggestion['id'].'">
           '.$suggestion['title'].'
         </a><br>';
       }

@@ -138,6 +138,17 @@ class Build extends DatabaseConnection {
       }
     }
   }
+  function searches_log($order_by = "id",$sort_by = "DESC",$limit = "15",$get_return = false) {
+    if ($order_by == "RANDOM") { $order_by = "RAND()"; }
+    else { $order_by = "`$order_by`"; }
+    $post_query = mysqli_query($this->con,"SELECT * FROM `searches` ORDER BY $order_by $sort_by LIMIT $limit");
+    if ($get_return) { return mysqli_fetch_assoc($post_query); }
+    else {
+      while ($post = mysqli_fetch_assoc($post_query)) {
+        echo "<h2><a href='search/{$post['text']}' title='{$post['text']}'>{$post['text']}</a></h2>";
+      }
+    }
+  }
 
   function search_input() {
     ?>
