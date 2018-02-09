@@ -90,7 +90,7 @@ class Build extends DatabaseConnection {
 
     $search_today_ip_query = mysqli_query($this->con,"SELECT * FROM `visitors_ip` WHERE `time` = '$now'");
     $today_ip_count = mysqli_num_rows($search_today_ip_query);
-    $search_yesterday_ip_query = mysqli_query($this->con,"SELECT * FROM `visitors_ip` WHERE `time` = '$yesterday'");
+    $search_yesterday_ip_query = mysqli_query($this->con,"SELECT * FROM `visitors_ip` WHERE `time` LIKE '%$yesterday%'");
     $yesterday_ip_count = mysqli_num_rows($search_yesterday_ip_query);
 
     $query=mysqli_query($this->con,'SELECT * FROM `counter`');

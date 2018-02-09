@@ -15,11 +15,9 @@ include_once("includes/basic.php");
 <body>
   <?php $Build->navbar(); ?>
   <div class="container">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="ads">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="ads" postion="top-big-ad">
       <div class="box shadow_box purchase_cm_box" >
-        <a href="ads">
-         <img src="img/1_fa.gif" alt="تبلغات بنری" id="ads2" style="margin-right:20px;width:96%;height:150px;">
-        </a>
+        <?php $Ads->get_ad("top-big-ad"); ?>
       </div>
     </div>
     <br>
@@ -44,7 +42,7 @@ include_once("includes/basic.php");
       <div class="box shadow_box purchase_cm_box" >
       <h1>  کاربران بیشتر این مطالب را جستجو کردند</h1>
         <hr>
-        <?php $Build->searches_log("id","DESC","20"); ?>
+        <?php $Build->searches_log("count","DESC","20");?>
       </div>
 
     </div>

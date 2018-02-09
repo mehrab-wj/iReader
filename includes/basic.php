@@ -3,11 +3,13 @@
 include_once(__DIR__."/../class/seo.php");
 include_once(__DIR__."/../class/config.php");
 include_once(__DIR__."/../class/objects.php");
+include_once(__DIR__."/../class/ads.php");
 
 $seo = new Seo;
 $db = new DatabaseConnection;
 $Build = new Build;
 $ProjectInfo = new ProjectInfo;
+$Ads = new Ads;
 //$site_info = $ProjectInfo->load_site_data_from_database();
 
 function getBaseUrl()

@@ -283,6 +283,11 @@ input[type=text]:focus,input[type=password]:focus,textarea:focus {
   border-bottom: 3px solid #7CB342;
 }
 .green:hover { background-color: #7CB342; border-bottom: 3px solid #689F38; }
+.top-big-ad {
+  margin-right:20px;
+  width:96%;
+  height:130px;
+}
 @media only screen and (max-width: 768px) {
   .GetBtn{
     width: 80%;
